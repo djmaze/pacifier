@@ -1,0 +1,18 @@
+table#notifications--list
+  tbody
+    each controller.filteredNotifications itemController="notification"
+      view "notification-item" class="notifications--item"
+        td.subject
+          .type.octicon class=octiconClass
+          a click=goto = subject.title
+          /= link-to subject.title 'notification.goto' this
+          if isLoading
+            span.spinner
+        td.updated_at= formattedDate updated_at
+        td.reason= reason
+        td.actions
+          if new
+            a.octicon.octicon-unmute aria-label="Subscribe this thead" click="subscribe"
+          if partipating
+            .octicon.octicon-circle-slash
+

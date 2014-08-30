@@ -1,0 +1,29 @@
+#repositories
+  ul
+    list-style-type none
+    margin 0
+  li
+    font-size 0.775rem
+    color #777
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+
+tr.notifications--item
+  .subject .type
+    width 22px
+  .updated_at
+    width 7em
+  &.is-active
+    background-color #eee
+    border-bottom 1px solid black
+
+tr.notifications--mark-as-read
+  display: none
+
+.spinner
+  display inline-block
+  background url(http://www.germania-weilbach.de/img/spinner.gif) no-repeat
+  width 32px
+  height 32px
+

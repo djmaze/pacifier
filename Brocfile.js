@@ -17,4 +17,22 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = app.toTree();
+// Foundation
+app.import('vendor/foundation/css/normalize.css');
+app.import('vendor/foundation/css/foundation.css');
+
+// Octicons
+app.import('vendor/octicons/octicons/octicons.css');
+var appTree = app.toTree();
+var pickFiles = require('broccoli-static-compiler');
+var mergeTrees = require('broccoli-merge-trees');
+var fonts = pickFiles('vendor/octicons', {
+  srcDir: '/octicons',
+  destDir: '/assets'
+});
+
+// Moment
+app.import('vendor/moment/moment.js');
+
+//module.exports = app.toTree();
+module.exports = mergeTrees([appTree, fonts]);

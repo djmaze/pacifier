@@ -2,6 +2,24 @@
 
 This README outlines the details of collaborating on this Ember application.
 
+Build with:
+
+    sudo fig run ember new github-notifications
+    mv github-notifications/{*,.*} .
+    rmdir github-notifications
+
+Run with:
+
+    sudo fig up ember
+
+Run tests:
+
+    sudo fig run ember test
+
+Build:
+
+    sudo fig run ember build
+
 ## Installation
 
 * `git clone` this repository

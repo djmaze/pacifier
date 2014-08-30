@@ -1,0 +1,7 @@
+app:
+  build: .
+  volumes:
+    - .:/home/app
+  ports:
+    - "4200:4200"
+    - "35729:35729"

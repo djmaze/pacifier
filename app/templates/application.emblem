@@ -1,0 +1,5 @@
+.row
+  .large-12.column
+    h1 id="title" Pacifier
+
+= outlet

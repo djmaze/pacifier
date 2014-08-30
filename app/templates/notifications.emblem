@@ -1,0 +1,9 @@
+.row
+  #repositories.small-2.column
+    ul
+      each repository in repositories
+        li
+          = link-to repository.name 'notifications' (query-params repository=repository.name)
+          | ({{repository.count}})
+  #notifications.small-10.column
+    = outlet index
