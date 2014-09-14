@@ -13,13 +13,11 @@
     <link rel="stylesheet" href="assets/github-notifications.css">
   </head>
   <body>
-    <script>
-      window.GithubNotificationsENV = {{ENV}};
-      window.EmberENV = window.GithubNotificationsENV.EmberENV;
-    </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/github-notifications.js"></script>
     <script>
+      window.GithubNotificationsENV = require('github-notifications/config/environment')['default'];
+      window.EmberENV = window.GithubNotificationsENV.EmberENV;
       window.GithubNotifications = require('github-notifications/app')['default'].create(GithubNotificationsENV.APP);
     </script>
   </body>
