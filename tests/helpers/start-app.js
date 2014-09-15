@@ -1,8 +1,6 @@
-/* global require */
-
-var Application = require('github-notifications/app')['default'];
-var Router = require('github-notifications/router')['default'];
 import Ember from 'ember';
+import Application from 'github-notifications/app';
+import Router from 'github-notifications/router';
 
 export default function startApp(attrs) {
   var App;
