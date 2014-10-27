@@ -19,7 +19,8 @@ NotificationsController = Ember.ArrayController.extend
     repository = @get 'repository'
     notifications = @get('arrangedContent')
       .filter(@viewFilter)
-    if repository then notifications.filterBy('repository.full_name', repository) else notifications
+    notifications = if repository then notifications.filterBy('repository.full_name', repository) else notifications
+    notifications[0..49]
   ).property 'repository', 'model', 'model.@each.hasMuted'
 
 `export default NotificationsController`
