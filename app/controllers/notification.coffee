@@ -15,7 +15,7 @@ NotificationController = Ember.ObjectController.extend
       else @get('subject.type')
   ).property('subject.type')
 
-  new: (->
+  isNew: (->
     @get('last_read_at') == null
   ).property('last_read_at')
 

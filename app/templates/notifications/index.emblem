@@ -1,7 +1,7 @@
 table#notifications--list
   tbody
     each controller.filteredNotifications itemController="notification"
-      tr.notifications--item class={read new}
+      tr.notifications--item class={isRead isNew}
         td.subject
           button class="notifications--mute-until-here" click="muteAllNotificationsUntilHere" Mute until ->
           .type.octicon class=octiconClass
