@@ -1,8 +1,8 @@
 .row
   #repositories.small-3.column
-    ul
+    ul.repositories--list
       each repository in repositories
-        li
+        li.repositories--list--item
           = link-to repository.name 'notifications' (query-params repository=repository.name)
           | ({{repository.count}})
   #notifications.small-9.column
