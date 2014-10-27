@@ -14,7 +14,7 @@ NotificationsController = Ember.ArrayController.extend
       previousValue.pushObject repository unless repository.count > 1
       previousValue
     , Ember.ArrayProxy.create(content: Ember.A([])), 'repository'
-  ).property 'model.@each.hasMuted', 'model.@each.read'
+  ).property 'model.@each.hasMuted', 'model.@each.isRead'
   filteredNotifications: (->
     repository = @get 'repository'
     notifications = @get('arrangedContent')
