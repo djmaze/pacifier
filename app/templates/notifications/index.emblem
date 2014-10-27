@@ -6,8 +6,6 @@ table#notifications--list
           .type.octicon class=octiconClass
           a click=goto = subject.title
           /= link-to subject.title 'notification.goto' this
-          if isLoading
-            span.spinner
         td.updated_at= formattedDate updated_at
         td.reason= reason
         td.actions

@@ -1,5 +1,7 @@
 .row
   .large-12.column
     h1 id="title" Pacifier
+    if isLoading
+      span.spinner
 
 = outlet
