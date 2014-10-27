@@ -6,7 +6,7 @@ NotificationsController = Ember.ArrayController.extend
   sortProperties: ['updated_at']
   sortAscending: true
   viewFilter: (item, index, enumerable) ->
-    !item.isMuted && !item.isSubscribed && !item.isRead
+    !item.isMuted && !item.isRead && !item.justSubscribed
   repositories: (->
     this.filter(@viewFilter).reduce (previousValue, item) ->
       repository = previousValue.findBy('name', item.repository.full_name) || { name: item.repository.full_name, count: 0 }
@@ -14,7 +14,7 @@ NotificationsController = Ember.ArrayController.extend
       previousValue.pushObject repository unless repository.count > 1
       previousValue
     , Ember.ArrayProxy.create(content: Ember.A([])), 'repository'
-  ).property 'model.@each.hasMuted', 'model.@each.isRead'
+  ).property 'model.@each.hasMuted', 'model.@each.isRead', 'model.@each.justSubscribed'
   filteredNotifications: (->
     repository = @get 'repository'
     notifications = @get('arrangedContent')

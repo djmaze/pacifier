@@ -26,7 +26,7 @@ NotificationController = Ember.ObjectController.extend
   actions:
     toggleSubscription: ->
       # FIXME Subscribe the thread instead!
-      @toggleProperty 'model.isSubscribed'
+      @set 'model.justSubscribed', @toggleProperty('model.isSubscribed')
       false
     goto: ->
       @set 'isLoading', true
