@@ -6,7 +6,7 @@ NotificationsRoute = Ember.Route.extend
     path = 'notifications'
     @getData path, [], 1
   getData: (path, results, page) ->
-    Ember.$.getJSON("https://api.github.com/#{path}?page=#{page}&per_page=50").then (data) =>
+    Ember.$.ajax(datatype: 'json', url: "https://api.github.com/#{path}?page=#{page}&per_page=50", cache: false).then (data) =>
       if data.length > 0
         @getData path, results.concat(data), page + 1
       else
