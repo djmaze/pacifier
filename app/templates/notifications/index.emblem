@@ -1,8 +1,9 @@
 table#notifications--list
   tbody
     each controller.filteredNotifications itemController="notification"
-      view "notification-item" class="notifications--item"
+      tr.notifications--item
         td.subject
+          button class="notifications--mute-until-here" click="muteAllNotificationsUntilHere" Mute until ->
           .type.octicon class=octiconClass
           a click=goto = subject.title
           /= link-to subject.title 'notification.goto' this
