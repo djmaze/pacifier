@@ -5,21 +5,21 @@ NotificationsController = Ember.ArrayController.extend
   repository: null
   sortProperties: ['updated_at']
   sortAscending: true
-  muteAllNotificationsUntil: (model) ->
-    alert "TODO" + @get('filteredNotifications').indexOf(model)
+  viewFilter: (item, index, enumerable) ->
+    !item.isMuted && !item.isSubscribed && !item.isRead
   repositories: (->
-    this.reduce (previousValue, item) ->
+    this.filter(@viewFilter).reduce (previousValue, item) ->
       repository = previousValue.findBy('name', item.repository.full_name) || { name: item.repository.full_name, count: 0 }
       repository.count += 1
       previousValue.pushObject repository unless repository.count > 1
       previousValue
     , Ember.ArrayProxy.create(content: Ember.A([])), 'repository'
-  ).property 'model.@each'
+  ).property 'model.@each.hasMuted', 'model.@each.read'
   filteredNotifications: (->
     repository = @get 'repository'
-    notifications = @get 'arrangedContent'
-    repositories = if repository then notifications.filterBy('repository.full_name', repository) else notifications
-    repositories
-  ).property 'repository', 'model'
+    notifications = @get('arrangedContent')
+      .filter(@viewFilter)
+    if repository then notifications.filterBy('repository.full_name', repository) else notifications
+  ).property 'repository', 'model', 'model.@each.hasMuted'
 
 `export default NotificationsController`

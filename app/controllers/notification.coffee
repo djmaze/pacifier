@@ -33,8 +33,21 @@ NotificationController = Ember.ObjectController.extend
       Ember.$.getJSON(@get('subject.latest_comment_url')).then (comment_data) =>
         window.open comment_data.html_url, '_blank'
         @set 'isLoading', false
-  muteAllNotificationsUntilHere: ->
-    @get('controllers.notifications').muteAllNotificationsUntil(@get('model'))
         @set 'isRead', true
+    muteAllNotificationsUntilHere: ->
+      filteredNotifications = @get 'controllers.notifications.filteredNotifications'
+      @muteThreadForNotification notification for notification in filteredNotifications[0..filteredNotifications.indexOf(@get('model'))] when notification.isSubscribed isnt true
+      @set 'hasMuted', true
+
+  muteThreadForNotification: (notification) ->
+    console.log "Mark as read #{notification.id} #{notification.subject.title}"
+    Ember.$.ajax
+      url: notification.url, type: 'PATCH'
+    console.log "Mute #{notification.id} #{notification.subject.title}"
+    Ember.$.ajax
+      url: notification.subscription_url, type: 'PUT',
+      data: JSON.stringify(ignored: true)
+    cont = @get('controllers.notifications.model').findBy('id', notification.id)
+    notification.isMuted = true
 
 `export default NotificationController`
