@@ -10,8 +10,6 @@ table#notifications--list
         td.updated_at= formattedDate updated_at
         td.reason= reason
         td.actions
-          if new
-            a.octicon.octicon-unmute aria-label="Subscribe this thead" click="subscribe"
           if partipating
             .octicon.octicon-circle-slash
-
+          a.notifications--item--toggle-subscription.octicon.octicon-unmute class=isSubscribed:selected aria-label="Subscribe to this thread" click="toggleSubscription"

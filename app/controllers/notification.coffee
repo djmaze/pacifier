@@ -24,8 +24,10 @@ NotificationController = Ember.ObjectController.extend
   ).property('reason')
 
   actions:
-    subscribe: ->
-      alert('Woohoo! You did it!')
+    toggleSubscription: ->
+      # FIXME Subscribe the thread instead!
+      @toggleProperty 'model.isSubscribed'
+      false
     goto: ->
       @set 'isLoading', true
       Ember.$.getJSON(@get('subject.latest_comment_url')).then (comment_data) =>

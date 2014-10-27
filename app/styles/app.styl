@@ -26,6 +26,11 @@ tr.notifications--item
   td.actions
     width 5em
 
+a.notifications--item--toggle-subscription
+  color grey
+  &.selected
+    // FIXME Find a better way of using the vendored color here
+    color #008CBA
 
 tr.notifications--mark-as-read
   display: none
