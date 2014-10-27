@@ -33,10 +33,8 @@ NotificationController = Ember.ObjectController.extend
       Ember.$.getJSON(@get('subject.latest_comment_url')).then (comment_data) =>
         window.open comment_data.html_url, '_blank'
         @set 'isLoading', false
-  markAsRead: ->
-    # FIXME Get this working
-    model = @get('controllers.notifications').get('model')
   muteAllNotificationsUntilHere: ->
     @get('controllers.notifications').muteAllNotificationsUntil(@get('model'))
+        @set 'isRead', true
 
 `export default NotificationController`

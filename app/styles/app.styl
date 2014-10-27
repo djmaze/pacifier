@@ -10,6 +10,8 @@
     text-overflow ellipsis
 
 tr.notifications--item
+  &.read .subject a
+    color: grey
   .subject .type
     width 22px
   .updated_at
@@ -32,8 +34,6 @@ a.notifications--item--toggle-subscription
     // FIXME Find a better way of using the vendored color here
     color #008CBA
 
-tr.notifications--mark-as-read
-  display: none
 button.notifications--mute-until-here
   visibility hidden
   opacity 0
