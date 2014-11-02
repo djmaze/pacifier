@@ -23,10 +23,18 @@ NotificationController = Ember.ObjectController.extend
     @get('reason') == 'participating' # ??
   ).property('reason')
 
+  isSubscribed: (->
+    @get('reason') == 'manual'
+  ).property 'reason'
+
   actions:
     toggleSubscription: ->
-      # FIXME Subscribe the thread instead!
-      @set 'model.justSubscribed', @toggleProperty('model.isSubscribed')
+      @set 'reason', if @get('reason') == 'manual' then 'subscribed' else 'manual'
+      subscribed = @get('isSubscribed')
+      @set 'model.justSubscribed', subscribed
+      Ember.$.ajax
+        url: @get('subscription_url'), type: 'PUT',
+        data: JSON.stringify(subscribed: subscribed)
       false
     goto: ->
       @set 'isLoading', true
