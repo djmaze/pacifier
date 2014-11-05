@@ -14,6 +14,7 @@ NotificationsController = Ember.ArrayController.extend
       previousValue.pushObject repository unless repository.count > 1
       previousValue
     , Ember.ArrayProxy.create(content: Ember.A([])), 'repository'
+    .sortBy('count').reverseObjects()
   ).property 'model.@each.hasMuted', 'model.@each.isRead', 'model.@each.justSubscribed'
   filteredNotifications: (->
     repository = @get 'repository'
