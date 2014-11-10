@@ -1,7 +1,8 @@
 `import Ember from 'ember'`
+`import config from './config/environment'`
 
 Router = Ember.Router.extend
-  location: GithubNotificationsENV.locationType
+  location: config.EmberENV.locationType
 
 Router.map ->
   @resource 'notifications'
