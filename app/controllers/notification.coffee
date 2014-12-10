@@ -38,8 +38,16 @@ NotificationController = Ember.ObjectController.extend
       false
     goto: ->
       @set 'isLoading', true
-      Ember.$.getJSON(@get('subject.latest_comment_url')).then (comment_data) =>
-        window.open comment_data.html_url, '_blank'
+      new Ember.RSVP.Promise((resolve, reject) =>
+        if @get('private')
+          # We would need "repo" permission in order to fetch the latest comment URL for a notification in a private repository
+          # This is definitely too much for now
+          resolve subject.url
+        else
+          Ember.$.getJSON(@get('subject.latest_comment_url')).then (comment_data) =>
+            resolve comment_data.html_url
+      ).then (url) =>
+        window.open url, '_blank'
         @set 'isLoading', false
         @set 'isRead', true
     muteAllNotificationsUntilHere: ->
