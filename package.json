@@ -34,6 +34,7 @@
     "broccoli-stylus-single": "~0.1.2",
     "ember-cli-coffeescript": "0.0.6",
     "broccoli-merge-trees": "~0.2.1",
-    "broccoli-static-compiler": "~0.2.1"
+    "broccoli-static-compiler": "~0.2.1",
+    "torii": "~0.2.2"
   }
 }

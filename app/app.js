@@ -14,9 +14,6 @@ var App = Ember.Application.extend({
 loadInitializers(App, config.modulePrefix);
 
 //Ember.$.ajaxSetup({ cache: false });
-Ember.$.ajaxPrefilter(function(options, originalOptions, xhr) {
-  xhr.setRequestHeader('authorization', 'token <REPLACEME>');
-});
 
 Ember.Handlebars.registerBoundHelper('formattedDate', function(date) {
     return moment(date).fromNow();

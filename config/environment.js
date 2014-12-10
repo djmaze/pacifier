@@ -18,8 +18,20 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'connect-src': "'self' https://api.github.com"
-    }
+      'connect-src': "'self' http://localhost:9999 https://api.github.com"
+    },
+    gatekeeperURL: 'http://localhost:9999/authenticate/'
+  };
+
+  ENV['torii'] = {
+    providers: {
+      'github-oauth2': {
+        apiKey: '<REPLACEME>',
+        redirectUri: 'http://localhost:4200',
+        scope: 'notifications,user'
+      }
+    },
+    sessionServiceName: 'session'
   };
 
   if (environment === 'development') {

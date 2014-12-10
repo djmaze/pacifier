@@ -3,5 +3,7 @@
     h1 id="title" Pacifier
     if isLoading
       span.spinner
+    if session.isAuthenticated
+      a click="invalidateSession" Logout
 
 = outlet

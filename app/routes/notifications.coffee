@@ -1,6 +1,7 @@
 `import Ember from 'ember'`
+`import AuthenticatedRoute from './authenticated'`
 
-NotificationsRoute = Ember.Route.extend
+NotificationsRoute = AuthenticatedRoute.extend
   model: (params) ->
     #path = if params.repository then "repos/#{params.repository}/notifications" else 'notifications'
     path = 'notifications'
