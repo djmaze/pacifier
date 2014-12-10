@@ -54,6 +54,9 @@ NotificationController = Ember.ObjectController.extend
       filteredNotifications = @get 'controllers.notifications.filteredNotifications'
       @muteThreadForNotification notification for notification in filteredNotifications[0..filteredNotifications.indexOf(@get('model'))] when notification.isSubscribed isnt true
       @set 'hasMuted', true
+      Ember.$('body,html').animate
+        scrollTop: 0
+      , 800
 
   muteThreadForNotification: (notification) ->
     console.log "Mark as read #{notification.id} #{notification.subject.title}"
