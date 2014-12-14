@@ -2,7 +2,7 @@
 `import config from './config/environment'`
 
 Router = Ember.Router.extend
-  location: config.EmberENV.locationType
+  location: config.locationType
 
 Router.map ->
   @resource 'notifications'
