@@ -1,0 +1,6 @@
+.cache
+.git
+.npm
+bower_components
+node_modules
+tmp
