@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'github-notifications',
+    modulePrefix: 'pacifier',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

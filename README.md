@@ -1,15 +1,12 @@
-# Github-notifications
+# Pacifier
 
-This README outlines the details of collaborating on this Ember application.
-
-A short introduction of this app could easily go here.
-
+Having large numbers of Github notifications? Watching many repositories? Pacifier allows you to focus on the ones you are interested in.
 
 Build with:
 
-    sudo fig run ember new github-notifications
-    mv github-notifications/{*,.*} .
-    rmdir github-notifications
+    sudo fig run ember new pacifier
+    mv pacifier/{*,.*} .
+    rmdir pacifier
 
 Run with:
 
